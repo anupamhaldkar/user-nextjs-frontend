@@ -7,10 +7,10 @@ const UserList = () => {
             <table className='min-w-full'>
                 <thead className='bg-gray-50'>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>EmailId</th>
-                        <th>Actions</th>
+                        <th className='text-left font-medium text-gray-500 uppercase tracking-wide py-3 px-6'>First Name</th>
+                        <th className='text-left font-medium text-gray-500 uppercase tracking-wide py-3 px-6'>Last Name</th>
+                        <th className='text-left font-medium text-gray-500 uppercase tracking-wide py-3 px-6'>EmailId</th>
+                        <th className='text-right font-medium text-gray-500 uppercase tracking-wide py-3 px-6'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
