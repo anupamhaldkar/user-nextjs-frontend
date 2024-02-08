@@ -13,12 +13,28 @@ const UserList = () => {
                         <th className='text-right font-medium text-gray-500 uppercase tracking-wide py-3 px-6'>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='bg-white'>
                     <tr>
-                        <td>Anupam</td>
-                        <td>Haldkar</td>
-                        <td>email@fmfsds.com</td>
-                        <td></td>
+                        <td className='text-left px-6 py-4 whitespace-nowrap'>
+                            <div className='text-sm text-gray-500'>
+                            Anupam
+                            </div>
+                        </td>
+                        <td className='text-left px-6 py-4 whitespace-nowrap'>
+                            <div className='text-sm text-gray-500'>
+                                Haldkar
+                            </div>
+                        </td>
+                        <td className='text-left px-6 py-4 whitespace-nowrap'>
+                            <div className='text-sm text-gray-500'>
+                            email@fmfsds.com
+                            </div>
+                        </td>
+                        <td className='text-left px-6 py-4 whitespace-nowrap'>
+                            <div className='text-sm text-gray-500'>
+                            button
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
