@@ -8,9 +8,19 @@ const UserList = () => {
                 <thead className='bg-gray-50'>
                     <tr>
                         <th>First Name</th>
-                        <th></th>
+                        <th>Last Name</th>
+                        <th>EmailId</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                        <td>Anupam</td>
+                        <td>Haldkar</td>
+                        <td>email@fmfsds.com</td>
+                        <td></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
