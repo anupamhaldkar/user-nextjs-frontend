@@ -1,7 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import User from './User'
 
 const UserList = () => {
+    const USER_BASE_API_URL = 'http://localhost:8080/api/v1/users';
+    const [users, setUsers] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch(USER_BASE_API_URL,{  
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+                });
+                const users = await response.json();
+                setUsers(users);
+        } catch (error) {
+            console.log(error);
+        }
+        setLoading(false);
+      };
+      fetchData();
+    });
+    
   return (
     <div className='container mx-auto my-8'>
         <div className='flex shadow border-b'>
@@ -14,9 +39,13 @@ const UserList = () => {
                         <th className='text-right font-medium text-gray-500 uppercase tracking-wide py-3 px-6'>Actions</th>
                     </tr>
                 </thead>
+                {!loading && (
                 <tbody className='bg-white'>
-                    <User />
+                    {users?.map((user)=>(
+                        <User user={user} key={user.id} />
+                    ))}
                 </tbody>
+                )}
             </table>
         </div>
     </div>
