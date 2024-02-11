@@ -25,7 +25,7 @@ const UserList = () => {
         setLoading(false);
       };
       fetchData();
-    });
+    },[]);
     
   return (
     <div className='container mx-auto my-8'>
