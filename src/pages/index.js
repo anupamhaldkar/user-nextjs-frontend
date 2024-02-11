@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "../../components/Navbar";
 import UserList from "../../components/UserList";
+import AddUser from "../../components/AddUser";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
       <Navbar />
     <main>
+      <AddUser />
       <UserList />
     </main>
     </div>
