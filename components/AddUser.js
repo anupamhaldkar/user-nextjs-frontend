@@ -59,6 +59,26 @@ const AddUser = () => {
                         className="h-19 w-96 border mt-2 px-2 py-2"
                       ></input>
                     </div>
+                    <div className="h-14 my-4">
+                      <label className="block text-gray-600 text-sm font-normal">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        className="h-19 w-96 border mt-2 px-2 py-2"
+                      ></input>
+                    </div>
+                    <div className="h-14 my-4">
+                      <label className="block text-gray-600 text-sm font-normal">
+                        Email Id
+                      </label>
+                      <input
+                        type="text"
+                        name="emailId"
+                        className="h-19 w-96 border mt-2 px-2 py-2"
+                      ></input>
+                    </div>
                   </div>
                 </div>
               </div>
