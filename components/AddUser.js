@@ -4,14 +4,14 @@ import { Dialog, Transition } from "@headlessui/react";
 const AddUser = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  function closeModal(){
+  function closeModal() {
     setIsOpen(false);
   }
 
-  function openModal(){
+  function openModal() {
     setIsOpen(true);
   }
-  
+
   return (
     <>
       <div className="container mx-auto my-8">
@@ -47,6 +47,20 @@ const AddUser = () => {
                 >
                   Add new User
                 </Dialog.Title>
+                <div className="flex min-w-md mx-auto">
+                  <div className="py-2">
+                    <div className="h-14 my-4">
+                      <label className="block text-gray-600 text-sm font-normal">
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        name="firstName"
+                        className="h-19 w-96 border mt-2 px-2 py-2"
+                      ></input>
+                    </div>
+                  </div>
+                </div>
               </div>
             </Transition.Child>
           </div>
