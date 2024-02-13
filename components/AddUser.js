@@ -56,7 +56,7 @@ const AddUser = () => {
                       <input
                         type="text"
                         name="firstName"
-                        className="h-19 w-96 border mt-2 px-2 py-2"
+                        className="h-10 w-96 border mt-2 px-2 py-2"
                       ></input>
                     </div>
                     <div className="h-14 my-4">
@@ -66,7 +66,7 @@ const AddUser = () => {
                       <input
                         type="text"
                         name="lastName"
-                        className="h-19 w-96 border mt-2 px-2 py-2"
+                        className="h-10 w-96 border mt-2 px-2 py-2"
                       ></input>
                     </div>
                     <div className="h-14 my-4">
@@ -76,7 +76,7 @@ const AddUser = () => {
                       <input
                         type="text"
                         name="emailId"
-                        className="h-19 w-96 border mt-2 px-2 py-2"
+                        className="h-10 w-96 border mt-2 px-2 py-2"
                       ></input>
                     </div>
                   </div>
