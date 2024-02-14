@@ -4,10 +4,10 @@ import { Dialog, Transition } from "@headlessui/react";
 const AddUser = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState({
-    "id":"",
-    "firstName":"",
-    "lastName":"",
-    "emailId":""
+    id: "",
+    firstName: "",
+    lastName: "",
+    emailId: "",
   });
 
   function closeModal() {
@@ -17,6 +17,11 @@ const AddUser = () => {
   function openModal() {
     setIsOpen(true);
   }
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setUser({ ...user, [event.target.name]: value });
+  };
 
   return (
     <>
@@ -63,6 +68,7 @@ const AddUser = () => {
                         type="text"
                         name="firstName"
                         value={user.firstName}
+                        onChange={(e) => handleChange(e)}
                         className="h-10 w-96 border mt-2 px-2 py-2"
                       ></input>
                     </div>
@@ -74,6 +80,7 @@ const AddUser = () => {
                         type="text"
                         name="lastName"
                         value={user.lastName}
+                        onChange={(e) => handleChange(e)}
                         className="h-10 w-96 border mt-2 px-2 py-2"
                       ></input>
                     </div>
@@ -85,6 +92,7 @@ const AddUser = () => {
                         type="text"
                         name="emailId"
                         value={user.emailId}
+                        onChange={(e) => handleChange(e)}
                         className="h-10 w-96 border mt-2 px-2 py-2"
                       ></input>
                     </div>
