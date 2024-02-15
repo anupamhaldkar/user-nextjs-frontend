@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 const AddUser = () => {
+  const USER_BASE_API_URL = 'http://localhost:8080/api/v1/users';
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState({
     id: "",
@@ -22,6 +23,33 @@ const AddUser = () => {
     const value = event.target.value;
     setUser({ ...user, [event.target.name]: value });
   };
+
+  const saveUser = async (e) => {
+    e.preventDefault();
+    const response = await fetch(USER_BASE_API_URL, {
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user)
+    });
+    if(!response.ok){
+      throw new Error("Something went wrong");
+    }
+    const _user = await response.json();
+    reset(e);
+  }
+
+  const reset = (e) => {
+    e.preventDefault();
+    setUser({
+      id: "",
+      firstName: "",
+      lastName: "",
+      emailId: "",
+    });
+    setIsOpen(false);
+  }
 
   return (
     <>
@@ -97,10 +125,14 @@ const AddUser = () => {
                       ></input>
                     </div>
                     <div className="h-14 my-4 space-x-4 pt-4">
-                      <button className="rounded text-white font-semibold bg-green-400 hover:bg-green-700 py-2 px-6">
+                      <button 
+                      onClick={saveUser}
+                      className="rounded text-white font-semibold bg-green-400 hover:bg-green-700 py-2 px-6">
                         Save
                       </button>
-                      <button className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6">
+                      <button 
+                        onClick={reset}
+                      className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6">
                         Close
                       </button>
                     </div>
