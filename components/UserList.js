@@ -26,6 +26,20 @@ const UserList = ({user}) => {
       };
       fetchData();
     },[user]);
+
+    const deleteUser =  (e,id) => {
+        e.preventDefault();
+        fetch(USER_BASE_API_URL + "/" + id, {
+            method: 'DELETE',
+        })
+     .then((res) => {
+        if(users){
+            setUsers((prevElement)=> {
+                return prevElement.filter((user)=> user.id !== id);
+            })
+        }
+     });
+    };
     
   return (
     <div className='container mx-auto my-8'>
@@ -42,7 +56,7 @@ const UserList = ({user}) => {
                 {!loading && (
                 <tbody className='bg-white'>
                     {users?.map((user)=>(
-                        <User user={user} key={user.id} />
+                        <User user={user} key={user.id} deleteUser={deleteUser}/>
                     ))}
                 </tbody>
                 )}
