@@ -1,10 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import UserList from "./UserList";
 
 const AddUser = () => {
-  const USER_BASE_API_URL = 'http://localhost:8080/api/v1/users';
+  const USER_BASE_API_URL = "http://localhost:8080/api/v1/users";
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState({
+    id: "",
+    firstName: "",
+    lastName: "",
+    emailId: "",
+  });
+
+  const [responseUser, setResponseUser] = useState({
     id: "",
     firstName: "",
     lastName: "",
@@ -19,26 +27,26 @@ const AddUser = () => {
     setIsOpen(true);
   }
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setUser({ ...user, [event.target.name]: value });
+  const handleChange = ({ target }) => {
+    setUser({ ...user, [target.name]: target.value });
   };
 
   const saveUser = async (e) => {
     e.preventDefault();
     const response = await fetch(USER_BASE_API_URL, {
-      method:"POST",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error("Something went wrong");
     }
     const _user = await response.json();
+    setResponseUser(_user);
     reset(e);
-  }
+  };
 
   const reset = (e) => {
     e.preventDefault();
@@ -49,7 +57,7 @@ const AddUser = () => {
       emailId: "",
     });
     setIsOpen(false);
-  }
+  };
 
   return (
     <>
@@ -125,14 +133,16 @@ const AddUser = () => {
                       ></input>
                     </div>
                     <div className="h-14 my-4 space-x-4 pt-4">
-                      <button 
-                      onClick={saveUser}
-                      className="rounded text-white font-semibold bg-green-400 hover:bg-green-700 py-2 px-6">
+                      <button
+                        onClick={saveUser}
+                        className="rounded text-white font-semibold bg-green-400 hover:bg-green-700 py-2 px-6"
+                      >
                         Save
                       </button>
-                      <button 
+                      <button
                         onClick={reset}
-                      className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6">
+                        className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6"
+                      >
                         Close
                       </button>
                     </div>
@@ -143,6 +153,7 @@ const AddUser = () => {
           </div>
         </Dialog>
       </Transition>
+      <UserList user={responseUser}/>
     </>
   );
 };
