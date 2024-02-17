@@ -18,22 +18,22 @@ const EditUser = ({ userId }) => {
   });
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            const response = await fetch(USER_BASE_API_URL + "/" + userId, 
-            {method: "GET",
-            headers: {
-                "Content-Type": "application/json
-            }
+      try {
+        const response = await fetch(USER_BASE_API_URL + "/" + userId, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
-        } catch (error) {
-            console.error(error);
-        }
+        const _user = await response.json();
+        setUser(_user);
+        setIsOpen(true);
+      } catch (error) {
+        console.error(error);
+      }
     };
-    const _user = await response.json();
-    setUser(_user);
-    setIsOpen(true);
-  }, [])
-  
+  }, []);
+
   function closeModal() {
     setIsOpen(false);
   }
