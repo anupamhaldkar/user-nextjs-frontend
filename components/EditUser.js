@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import React, { Fragment, useEffect, useState } from "react";
 
 const EditUser = ({ userId }) => {
   const USER_BASE_API_URL = "http://localhost:8080/api/v1/users";
@@ -32,7 +33,17 @@ const EditUser = ({ userId }) => {
         console.error(error);
       }
     };
+    if(userId){
+        fetchData();
+    }
   }, []);
+
+  const updateUser = async (e) => {};
+
+  const reset = (e) => {
+    e.preventDefault();
+    setIsOpen(false);
+  };
 
   function closeModal() {
     setIsOpen(false);
@@ -67,7 +78,7 @@ const EditUser = ({ userId }) => {
                 as="h3"
                 className="text-lg font-medium leading-6 text-gray-900"
               >
-                Add new User
+                Update User
               </Dialog.Title>
               <div className="flex min-w-md mx-auto">
                 <div className="py-2">
@@ -109,10 +120,10 @@ const EditUser = ({ userId }) => {
                   </div>
                   <div className="h-14 my-4 space-x-4 pt-4">
                     <button
-                      onClick={saveUser}
+                      onClick={updateUser}
                       className="rounded text-white font-semibold bg-green-400 hover:bg-green-700 py-2 px-6"
                     >
-                      Save
+                      Update
                     </button>
                     <button
                       onClick={reset}
