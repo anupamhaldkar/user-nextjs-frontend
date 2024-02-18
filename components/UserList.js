@@ -83,7 +83,7 @@ const UserList = ({ user }) => {
         </table>
       </div>
     </div>
-    <EditUser userId={userId}/>
+    <EditUser userId={userId} />
     </>
   );
 };

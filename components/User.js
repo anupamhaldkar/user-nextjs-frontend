@@ -14,7 +14,7 @@ const User = ({ user, deleteUser, editUser }) => {
       </td>
       <td className="text-right px-6 py-4 whitespace-nowrap">
         <a
-          onClick={(e, id) => editUser(e, user.id)}
+          onClick={(e) => editUser(e, user.id)}
           className="text-indigo-600 hover:text-indigo-800 cursor-pointer px-4"
         >
           Edit

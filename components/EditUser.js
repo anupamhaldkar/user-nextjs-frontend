@@ -36,7 +36,7 @@ const EditUser = ({ userId }) => {
     if(userId){
         fetchData();
     }
-  }, []);
+  }, [userId]);
 
   const updateUser = async (e) => {};
 
