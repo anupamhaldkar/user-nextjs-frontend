@@ -38,7 +38,21 @@ const EditUser = ({ userId }) => {
     }
   }, [userId]);
 
-  const updateUser = async (e) => {};
+  const updateUser = async (e) => {
+    e.preventDefault();
+    const response = await fetch(USER_BASE_API_URL + "/" + userId, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(user);
+    });
+    if(!response.ok){
+      throw new Error("Something went wrong");
+    }
+    const _user = await response.json();
+    reset(e);
+  };
 
   const reset = (e) => {
     e.preventDefault();
