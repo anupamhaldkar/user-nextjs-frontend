@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect, useState } from "react";
 
-const EditUser = ({ userId }) => {
+const EditUser = ({ userId, setResponseUser }) => {
   const USER_BASE_API_URL = "http://localhost:8080/api/v1/users";
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState({
@@ -11,12 +11,7 @@ const EditUser = ({ userId }) => {
     emailId: "",
   });
 
-  const [responseUser, setResponseUser] = useState({
-    id: "",
-    firstName: "",
-    lastName: "",
-    emailId: "",
-  });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,12 +40,13 @@ const EditUser = ({ userId }) => {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(user);
+      body: JSON.stringify(user)
     });
     if(!response.ok){
       throw new Error("Something went wrong");
     }
     const _user = await response.json();
+    setResponseUser(_user);
     reset(e);
   };
 
